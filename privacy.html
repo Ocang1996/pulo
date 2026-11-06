@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebijakan Privasi Pulo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@500&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; --paper: #F6F6F3; --ink: #0B0B0C; --quiet: #66665F; --hair: rgba(11,11,12,.12); }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 "Instrument Sans", "Segoe UI", system-ui, sans-serif; }
+main { width: min(680px, 100% - 40px); margin-inline: auto; padding: 48px 0 80px; }
+a { color: inherit; text-underline-offset: 3px; }
+h1, h2 { font-family: "Host Grotesk", "Segoe UI", system-ui, sans-serif; font-weight: 500; text-wrap: balance; }
+h1 { font-size: clamp(34px, 6vw, 48px); line-height: 1.05; letter-spacing: -.03em; margin: 40px 0 14px; }
+h2 { font-size: 22px; letter-spacing: -.015em; margin: 34px 0 8px; }
+p, ul { margin: 0 0 12px; }
+ul { padding-left: 20px; }
+li { margin-bottom: 8px; }
+hr { border: 0; border-top: 1px solid var(--hair); margin: 56px 0 0; }
+</style>
+</head>
+<body>
+<main>
+<a href="./">Kembali ke Pulo</a>
+<h1>Kebijakan Privasi Pulo</h1>
+<p>Berlaku sejak: 5 November 2026 · Pengembang: CloVerX</p>
+<p>Pulo adalah Dynamic Island untuk Windows. Pulo tidak memakai akun, tidak mengirim telemetri atau data penggunaan, dan tidak punya server. Semua data Anda tetap di komputer Anda.</p>
+<h2>Data yang disimpan di komputer Anda</h2>
+<p>Data berikut disimpan di folder data aplikasi Pulo (database lokal) dan tidak pernah dikirim ke mana pun:</p>
+<ul>
+<li><strong>Pengaturan</strong>: pilihan Anda di jendela Pengaturan.</li>
+<li><strong>Telepon WhatsApp</strong>: saat telepon masuk, nama penelepon dibaca dari jendela WhatsApp untuk ditampilkan di island, hanya di memori selama berdering dan tidak disimpan. Bisa dimatikan di Pengaturan.</li>
+<li><strong>Riwayat notifikasi</strong>: maksimal 50 notifikasi terakhir (nama aplikasi, judul, isi), bila riwayat dinyalakan. Bisa dimatikan dan dihapus di Pengaturan.</li>
+<li><strong>Rak File</strong>: lokasi file yang Anda seret ke Pulo (bukan salinan file), teks yang Anda simpan, dan gambar yang Anda seret dari browser.</li>
+<li><strong>Tugas</strong>: judul tugas dan waktunya.</li>
+<li><strong>Pengingat sehat</strong>: catatan minum dan peregangan (dihapus otomatis setelah 90 hari).</li>
+</ul>
+<p>Menghapus Pulo dari Windows juga menghapus semua data ini.</p>
+<h2>Data yang dibaca dari Windows, tanpa disimpan atau dikirim</h2>
+<ul>
+<li><strong>Notifikasi aplikasi lain</strong>, untuk ditampilkan di island. Windows meminta izin Anda terlebih dahulu.</li>
+<li><strong>Lagu yang sedang diputar</strong> (judul, artis, cover) dari kontrol media Windows.</li>
+<li><strong>Volume, kecerahan, baterai, Wi-Fi, dan perangkat audio.</strong></li>
+<li><strong>Judul jendela browser</strong>, hanya saat musik diputar di browser, untuk menuliskan platformnya (misalnya YouTube). Tidak disimpan dan tidak dikirim ke mana pun.</li>
+<li><strong>Catatan pemakaian kamera dan mikrofon</strong> milik Windows, hanya untuk menyalakan titik indikator. Pulo tidak pernah memakai kamera atau mikrofon Anda.</li>
+<li><strong>Terang layar di sekitar island</strong>, hanya pada tema Liquid Glass, supaya teks tetap terbaca. Yang dipakai hanya angka rata-ratanya.</li>
+<li><strong>Daftar aplikasi taskbar dan gambar jendela yang sedang dipakai</strong>, hanya bila Dock Anda nyalakan, untuk menampilkan ikon dan efek Genie. Gambar jendela hanya di memori, hilang saat Pulo keluar, dan tidak dikirim ke mana pun. Ikon aplikasi disimpan di komputer Anda supaya Dock cepat terbuka.</li>
+</ul>
+<h2>Fitur yang memakai internet (semuanya mati sampai Anda menyalakannya)</h2>
+<ul>
+<li><strong>Lirik lagu</strong>: judul lagu, nama artis, dan durasi lagu yang sedang diputar dikirim ke lrclib.net untuk mencari lirik. Lirik hanya disimpan di memori selama lagu itu diputar.</li>
+<li><strong>Sampul film</strong>: bila Anda menyalakannya dan browser tidak memberi gambar sampul, alamat halaman yang sedang diputar dibuka untuk mengambil gambar sampulnya, tanpa cookie. Situs itu melihat permintaan ini seperti kunjungan biasa. Bila situsnya menolak, judul film dikirim ke api.tvmaze.com dan en.wikipedia.org untuk mencari posternya. Judul dari situs musik dan video pendek serta saat ada jendela penyamaran terbuka tidak dikirim. Gambarnya hanya di memori.</li>
+<li><strong>Kurs rupiah</strong>: kode mata uang yang Anda pilih (misalnya USD) dikirim ke api.frankfurter.dev sekali sehari.</li>
+<li><strong>Cuaca</strong>: koordinat kota yang Anda pilih di Pengaturan (bukan lokasi perangkat) dikirim ke api.met.no (MET Norway) saat Beranda dibuka, paling sering sejam sekali.</li>
+</ul>
+<p>Layanan itu milik pihak ketiga dan tunduk pada kebijakan privasi masing-masing. Pulo tidak mengirim alamat email, nama, lokasi perangkat, atau tanda pengenal perangkat Anda.</p>
+<h2>Pembaruan</h2>
+<ul>
+<li><strong>Versi Microsoft Store</strong> diperbarui oleh Store.</li>
+<li><strong>Versi Zip</strong> diperbarui oleh fitur App Installer milik Windows: sekali sehari Windows membaca berkas pembaruan dari ocang1996.github.io, dan bila ada versi baru mengunduhnya dari github.com. GitHub melihat permintaan ini seperti unduhan biasa, termasuk alamat IP Anda. Pulo tidak mengirim data apa pun di dalamnya.</li>
+</ul>
+<h2>Kontak</h2>
+<p>Pertanyaan tentang privasi: lewat halaman Pulo di Microsoft Store atau halaman rilisnya di GitHub.</p>
+<hr>
+<h1>Pulo Privacy Policy</h1>
+<p>Effective: 5 November 2026 · Developer: CloVerX</p>
+<p>Pulo is a Dynamic Island for Windows. Pulo has no accounts, sends no telemetry or usage data, and has no servers. All of your data stays on your computer.</p>
+<h2>Data stored on your computer</h2>
+<p>The following is stored in Pulo's app data folder (a local database) and is never sent anywhere:</p>
+<ul>
+<li><strong>Settings</strong>: your choices in the Settings window.</li>
+<li><strong>WhatsApp calls</strong>: during an incoming call, the caller's name is read from the WhatsApp window to show in the island. It stays in memory only while ringing and is not stored. You can turn this off in Settings.</li>
+<li><strong>Notification history</strong>: up to the last 50 notifications (app name, title, body), if history is on. You can turn it off and clear it in Settings.</li>
+<li><strong>File Shelf</strong>: the locations of files you drag onto Pulo (not copies), text you keep, and images you drag from a browser.</li>
+<li><strong>Tasks</strong>: task titles and times.</li>
+<li><strong>Healthy reminders</strong>: drink and stretch records (deleted automatically after 90 days).</li>
+</ul>
+<p>Uninstalling Pulo from Windows removes all of this data.</p>
+<h2>Data read from Windows, not stored or sent</h2>
+<ul>
+<li><strong>Other apps' notifications</strong>, to show them in the island. Windows asks for your permission first.</li>
+<li><strong>What's playing</strong> (title, artist, cover) from Windows media controls.</li>
+<li><strong>Volume, brightness, battery, Wi-Fi, and audio devices.</strong></li>
+<li><strong>Browser window titles</strong>, only while music plays in a browser, to show its platform (for example YouTube). They are never stored or sent anywhere.</li>
+<li><strong>Windows' camera and microphone usage records</strong>, only to light the indicator dot. Pulo never uses your camera or microphone.</li>
+<li><strong>Screen brightness around the island</strong>, only with the Liquid Glass theme, to keep text readable. Only the average number is used.</li>
+<li><strong>Taskbar app list and an image of the window in use</strong>, only if you turn on the Dock, to show icons and the Genie effect. Window images stay in memory, are gone when Pulo exits, and are never sent anywhere. App icons are saved on your computer so the Dock opens quickly.</li>
+</ul>
+<h2>Features that use the internet (all off until you turn them on)</h2>
+<ul>
+<li><strong>Song lyrics</strong>: the title, artist, and length of the song that's playing are sent to lrclib.net to find lyrics. Lyrics are kept in memory only while that song plays.</li>
+<li><strong>Movie covers</strong>: if you turn this on and the browser provides no cover image, the address of the playing page is opened to get its cover image, without cookies. That site sees this request like a normal visit. If the site refuses, the movie title is sent to api.tvmaze.com and en.wikipedia.org to find its poster. Titles from music and short-video sites, and while a private window is open, are not sent. The image stays in memory.</li>
+<li><strong>Rupiah exchange rates</strong>: the currency codes you pick (for example USD) are sent to api.frankfurter.dev once a day.</li>
+<li><strong>Weather</strong>: the coordinates of the city you pick in Settings (not your device location) are sent to api.met.no (MET Norway) when Home opens, at most once an hour.</li>
+</ul>
+<p>These services are run by third parties and follow their own privacy policies. Pulo never sends your email address, name, device location, or device identifiers.</p>
+<h2>Updates</h2>
+<ul>
+<li><strong>The Microsoft Store version</strong> is updated by the Store.</li>
+<li><strong>The Zip version</strong> is updated by Windows' App Installer feature: once a day Windows reads an update file from ocang1996.github.io and, if there is a new version, downloads it from github.com. GitHub sees this like any other download, including your IP address. Pulo sends no data with it.</li>
+</ul>
+<h2>Contact</h2>
+<p>Privacy questions: through Pulo's page in the Microsoft Store or its releases page on GitHub.</p>
+</main>
+</body>
+</html>
