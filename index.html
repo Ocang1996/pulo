@@ -4,154 +4,80 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pulo untuk Windows</title>
-<meta name="description" content="Pulo adalah pulau kecil di tepi atas layar Windows, rumah NIX si kucing hitam. Musik, notifikasi, timer, tugas, dan dock. Coba langsung di browser.">
+<meta name="description" content="Pulo adalah pulau kecil di tepi atas layar Windows, rumah NIX si kucing hitam. Musik, notifikasi, timer, tugas, widget, dock, dan jam desktop. Coba langsung di browser.">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="alternate" hreflang="id" href="https://ocang1996.github.io/pulo/?lang=id">
+<link rel="alternate" hreflang="en" href="https://ocang1996.github.io/pulo/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://ocang1996.github.io/pulo/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pulo">
+<meta property="og:title" content="Pulo untuk Windows · Pulo for Windows">
+<meta property="og:description" content="Pulau kecil di tepi atas layar Windows, rumah NIX si kucing hitam. A small island at the top of your Windows screen, home to NIX the black cat.">
+<meta property="og:url" content="https://ocang1996.github.io/pulo/">
+<meta property="og:image" content="https://ocang1996.github.io/pulo/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sim.css">
-<style>
-/* Satu gagasan: kucing hitam di atas kertas putih. Hitam hanya untuk yang milik Pulo (pulau, NIX, panggung). Navigasi halaman adalah pulaunya sendiri.
-   Satu tema dengan sengaja. Kuning hanya warna mata NIX, dipakai sebagai penanda kecil. */
-:root {
-  color-scheme: light;
-  --paper: #F6F6F3;
-  --ink: #0B0B0C;
-  --quiet: #66665F;
-  --hair: rgba(11,11,12,.12);
-  --eye: #F2B21B;
-  --on-ink: #F6F6F3;
-  --on-ink-quiet: #A3A39B;
-  --on-ink-hair: rgba(246,246,243,.16);
-  --display: "Host Grotesk", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
-  --body: "Instrument Sans", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 70px; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--body); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-img { max-width: 100%; display: block; }
-a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--eye); outline-offset: 2px; }
-h1, h2, h3, p { margin: 0; }
-h1, h2 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
-h1 { font-size: clamp(54px, 8.6vw, 124px); line-height: .95; letter-spacing: -.045em; }
-h2 { font-size: clamp(34px, 4.6vw, 62px); line-height: 1; letter-spacing: -.035em; }
-.wrap { width: min(1200px, 100% - 40px); margin-inline: auto; }
-.lede { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.45; color: var(--quiet); max-width: 34em; }
-.ink { background: var(--ink); color: var(--on-ink); }
-.ink .lede { color: var(--on-ink-quiet); }
-
-/* Navigasi = pulau di tepi atas jendela, tempat Pulo berada di layar Anda. */
-#notch { position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; height: 38px; padding: 0 16px; gap: 2px; background: #000; color: var(--on-ink); border-radius: 0 0 19px 19px; font-size: 14px; }
-#notch::before, #notch::after { content: ""; position: absolute; top: 0; width: 10px; height: 10px; }
-#notch::before { left: -10px; background: radial-gradient(circle at 0 100%, transparent 10px, #000 10.5px); }
-#notch::after { right: -10px; background: radial-gradient(circle at 100% 100%, transparent 10px, #000 10.5px); }
-#notch img { width: 34px; height: auto; margin: 0 6px 0 -8px; flex: none; }
-#notch a { padding: 3px 11px; border-radius: 999px; text-decoration: none; color: var(--on-ink-quiet); white-space: nowrap; transition: color .15s; }
-#notch a:hover { color: #fff; }
-#notch { transition: transform .3s cubic-bezier(.3,.7,.4,1); }
-#notch.away { transform: translate(-50%, -115%); }
-
-/* Pembuka */
-.hero { padding: clamp(92px, 11vw, 150px) 0 0; position: relative; }
-.hero .lede { margin-top: 26px; }
-.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 32px; }
-.btn { display: inline-flex; align-items: center; border: 0; border-radius: 999px; padding: 12px 22px; font: 500 16px var(--body); text-decoration: none; cursor: pointer; background: var(--ink); color: var(--on-ink); transition: opacity .15s; }
-.btn:hover { opacity: .82; }
-.ink .btn { background: var(--on-ink); color: var(--ink); }
-.textlink { font-weight: 500; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.meta { margin-top: 22px; font-size: 14.5px; color: var(--quiet); font-variant-numeric: tabular-nums; }
-/* Pulau naik ke samping teks supaya NIX terlihat di layar pertama; yang bisa diklik hanya kucingnya. */
-.shore { position: relative; height: clamp(250px, 26vw, 340px); margin-top: clamp(-190px, -12vw, -90px); pointer-events: none; }
-#heroNix { pointer-events: auto; }
-.shore svg { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 100%; display: block; }
-#heroNix { position: absolute; right: clamp(16px, 13vw, 210px); bottom: clamp(70px, 8vw, 118px); width: clamp(180px, 21vw, 300px); padding: 0; border: 0; background: none; cursor: pointer; transform-origin: 50% 100%; }
-#heroNix img { width: 100%; height: auto; }
-#heroSay { position: absolute; right: calc(clamp(16px, 13vw, 210px) + clamp(180px, 21vw, 300px) * .8); bottom: calc(clamp(70px, 8vw, 118px) + clamp(180px, 21vw, 300px) * .66); max-width: 16em; padding: 7px 13px; border-radius: 14px 14px 4px 14px; background: var(--ink); color: var(--on-ink); font-size: 14.5px; line-height: 1.35; box-shadow: 0 6px 18px rgba(11,11,12,.16); }
-
-/* Simulator */
-#coba { padding: clamp(36px, 5vw, 70px) 0 clamp(70px, 9vw, 120px); }
-#coba .lede { margin-top: 16px; }
-.simgrid { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; margin-top: clamp(32px, 4vw, 52px); }
-
-/* NIX dan Dock */
-.plain { padding: clamp(70px, 9vw, 130px) 0; }
-.plain .lede { margin-top: 18px; }
-#faces { display: flex; flex-wrap: wrap; gap: 4px 2px; margin-top: 38px; }
-#faces button { width: 82px; padding: 2px 0 6px; border: 0; background: none; font: 500 12.5px var(--body); color: var(--quiet); cursor: pointer; transition: transform .25s cubic-bezier(.3,1.6,.5,1), color .15s; }
-#faces button img { width: 100%; height: auto; }
-#faces button:hover { transform: translateY(-5px); color: var(--ink); }
-.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 6vw, 90px); align-items: start; }
-.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hair); }
-.rows li { display: flex; align-items: baseline; justify-content: space-between; gap: 22px; padding: 15px 0; border-bottom: 1px solid var(--hair); }
-.rows button { flex: none; border: 0; background: none; padding: 0; font: 500 15px var(--body); color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; cursor: pointer; }
-.statement { font: 500 clamp(30px, 4.3vw, 58px)/1.08 var(--display); letter-spacing: -.03em; max-width: 21em; text-wrap: balance; }
-.statement span { color: var(--quiet); }
-.fine { margin-top: 24px; font-size: 14.5px; color: var(--quiet); max-width: 60em; }
-.fine a { text-underline-offset: 3px; }
-#clockShow { aspect-ratio: 16 / 7; margin-bottom: 26px; border-radius: 16px; display: grid; place-items: center; overflow: hidden; background: radial-gradient(120% 90% at 70% 110%, #9BD3FF 0%, rgba(155,211,255,0) 46%), radial-gradient(90% 80% at 10% 0%, #2F6BFF 0%, rgba(47,107,255,0) 60%), linear-gradient(160deg, #0F3BD8, #2C8CF0 55%, #7FC3FF); }
-
-/* Unduh */
-#unduh { padding: clamp(70px, 9vw, 130px) 0 clamp(60px, 7vw, 90px); }
-.get { margin-top: 38px; border-top: 1px solid var(--on-ink-hair); }
-.get > div { display: grid; grid-template-columns: 200px minmax(0, 1fr) auto; gap: 8px 32px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--on-ink-hair); }
-.get h3 { font: 500 22px/1.2 var(--display); letter-spacing: -.015em; }
-.get p { color: var(--on-ink-quiet); max-width: 38em; }
-.get .act { justify-self: end; align-self: center; white-space: nowrap; }
-.coffee { display: flex; align-items: center; gap: 20px; }
-.coffee img { border-radius: 8px; }
-.pending { font-size: 15px; color: var(--on-ink-quiet); }
-.count { color: var(--on-ink); font-variant-numeric: tabular-nums; }
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px clamp(20px, 3vw, 44px); margin: 40px 0 0; padding: 0; list-style: none; counter-reset: s; color: var(--on-ink-quiet); font-size: 15.5px; }
-.steps li { counter-increment: s; }
-.steps li::before { content: counter(s); display: block; font: 500 15px var(--display); color: var(--on-ink); margin-bottom: 6px; }
-.steps strong { color: var(--on-ink); font-weight: 500; }
-footer { padding: 26px 0 40px; font-size: 13.5px; color: var(--on-ink-quiet); }
-footer .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 40px; border-top: 1px solid var(--on-ink-hair); padding-top: 22px; }
-footer a { text-underline-offset: 3px; }
-
-@media (max-width: 860px) {
-  .shore { margin-top: 0; }
-  .simgrid, .split { grid-template-columns: minmax(0, 1fr); }
-  .get > div { grid-template-columns: minmax(0, 1fr); }
-  .get .act { justify-self: start; margin-top: 8px; }
-  .steps { grid-template-columns: minmax(0, 1fr); }
-  footer .wrap { grid-template-columns: minmax(0, 1fr); }
-  #heroSay { right: calc(16px + 180px * .78); bottom: calc(70px + 180px * .62); max-width: 11em; }
-  #notch a { padding: 3px 7px; font-size: 13px; }
-}
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } #faces button { transition: none; } }
-</style>
+<link rel="stylesheet" href="site.css?v=7">
+<link rel="stylesheet" href="sim.css?v=7">
+<script src="i18n.js?v=7"></script>
 </head>
 <body>
 
-<nav id="notch" aria-label="Halaman ini">
+<nav id="notch" data-i18n-attr="aria-label:nav.label">
   <img id="notchNix" src="assets/nix-neutral.png" width="310" height="280" alt="">
-  <a href="#coba">Coba</a><a href="#dock">Dock</a><a href="#jam">Jam</a><a href="#unduh">Unduh</a>
+  <a href="#fitur" data-i18n="nav.features">Fitur</a><a href="#coba" data-i18n="nav.try">Coba</a><a class="opt" href="#dock" data-i18n="nav.dock">Dock</a><a class="opt" href="#jam" data-i18n="nav.clock">Jam</a><a href="#unduh" data-i18n="nav.get">Unduh</a><a class="opt" href="#faq" data-i18n="nav.faq">Tanya</a>
+  <button id="langBtn" type="button" data-i18n="lang.switch" data-i18n-attr="aria-label:lang.switchLabel">EN</button>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <h1>Layar Anda punya pulau.<br>NIX tinggal di sana.</h1>
-    <p class="lede">Pulo adalah pulau kecil di tepi atas layar Windows. Lagu, pesan, timer, dan pekerjaan yang sedang berjalan muncul di sana, dan NIX, kucing hitam penghuninya, ikut bereaksi. Di tepi bawah, dock menampung aplikasi Anda.</p>
-    <div class="cta">
-      <a class="btn" href="#coba">Coba di browser</a>
-      <a class="textlink" href="#unduh">Unduh untuk Windows</a>
+    <h1 data-i18n="hero.title" data-anim="hero">Layar Anda punya pulau.<br>NIX tinggal di sana.</h1>
+    <p class="lede" data-i18n="hero.lede" data-anim="hero"></p>
+    <div class="cta" data-anim="hero">
+      <a class="btn" href="#coba" data-i18n="hero.try">Coba di browser</a>
+      <a class="textlink" href="#unduh" data-i18n="hero.get">Unduh untuk Windows</a>
     </div>
-    <p class="meta"><span data-version>Versi 1.0.0</span> · Windows 10 dan 11 · Gratis<span data-count-line hidden> · <span data-count></span> kali diunduh</span></p>
+    <p class="meta" data-anim="hero"><span data-version>Versi 1.0.0</span> · <span data-i18n="hero.meta"></span><span data-count-line hidden> · <span data-count-text></span></span></p>
   </div>
   <div class="shore">
     <svg viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"><path fill="#0B0B0C" d="M0 262C210 276 430 268 620 232 760 205 850 118 1012 104c150-13 236 74 428 106v90H0z"/></svg>
-    <p id="heroSay" role="status">Klik aku.</p>
-    <button id="heroNix" type="button" aria-label="Sapa NIX"><img id="heroFace" src="assets/nix-happy.png" width="310" height="280" alt="NIX, kucing hitam bermata kuning"></button>
+    <p id="heroSay" role="status" data-i18n="hero.say">Klik aku.</p>
+    <button id="heroNix" type="button" data-i18n-attr="aria-label:hero.nixLabel"><img id="heroFace" src="assets/nix-happy.png" width="310" height="280" data-i18n-attr="alt:hero.nixAlt" alt=""></button>
   </div>
 </header>
 
 <main>
 
+<section id="fitur">
+  <div class="wrap">
+    <h2 data-i18n="bento.title" data-anim="up"></h2>
+    <p class="lede" data-i18n="bento.lede" data-anim="up"></p>
+    <div class="bento">
+      <button type="button" class="bc w3 tall" data-try="play" data-preview="music"><div class="scr warm"></div><div class="bt"><h3 data-i18n="b.music.t"></h3><p data-i18n="b.music.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc w3 tall" data-try="message" data-preview="alert"><div class="scr"></div><div class="bt"><h3 data-i18n="b.alert.t"></h3><p data-i18n="b.alert.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc w4 wide-m" data-try="home" data-preview="home"><div class="scr"></div><div class="bt"><h3 data-i18n="b.home.t"></h3><p data-i18n="b.home.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc" data-try="timer" data-preview="timer"><div class="scr warm"></div><div class="bt"><h3 data-i18n="b.timer.t"></h3><p data-i18n="b.timer.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc" data-try="shelf" data-preview="shelf"><div class="scr"></div><div class="bt"><h3 data-i18n="b.shelf.t"></h3><p data-i18n="b.shelf.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc" data-try="tasks" data-preview="tasks"><div class="scr warm"></div><div class="bt"><h3 data-i18n="b.tasks.t"></h3><p data-i18n="b.tasks.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc" data-try="agentWork" data-preview="agent"><div class="scr"></div><div class="bt"><h3 data-i18n="b.agent.t"></h3><p data-i18n="b.agent.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc w3" data-try="system" data-preview="system"><div class="scr warm"></div><div class="bt"><h3 data-i18n="b.system.t"></h3><p data-i18n="b.system.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc w3" data-try="blur" data-preview="look"><div class="scr blue"></div><div class="bt"><h3 data-i18n="b.look.t"></h3><p data-i18n="b.look.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc w3" data-try="genie" data-preview="dock"><div class="scr warm"></div><div class="bt"><h3 data-i18n="b.dock.t"></h3><p data-i18n="b.dock.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+      <button type="button" class="bc w3" data-try="clockBold" data-preview="clock"><div class="scr blue"></div><div class="bt"><h3 data-i18n="b.clock.t"></h3><p data-i18n="b.clock.d"></p><span class="go" data-i18n="bento.try"></span></div></button>
+    </div>
+  </div>
+</section>
+
 <section class="ink" id="coba">
   <div class="wrap">
-    <h2>Coba di sini.</h2>
-    <p class="lede">Arahkan kursor ke pulau di layar contoh, atau pilih fitur di daftar. Semua berjalan di browser dan tidak menyentuh komputer Anda.</p>
+    <h2 data-i18n="try.title" data-anim="up"></h2>
+    <p class="lede" data-i18n="try.lede" data-anim="up"></p>
     <div class="simgrid">
       <div id="groups"></div>
       <div id="simTop">
@@ -168,14 +94,14 @@ footer a { text-underline-offset: 3px; }
             <path fill="#FFE3C4" opacity=".5" d="M606 398h68l-6 6h-56zm-14 16h96l-8 7h-80zm-16 21h128l-12 8h-104z"/>
             <path fill="#101A36" d="M0 560V498c120-30 240-34 380-6 160 32 380 40 600-12v80z"/>
           </svg>
-          <div id="simClock" hidden aria-label="Jam desktop contoh"></div>
+          <div id="simClock" hidden data-i18n-attr="aria-label:try.clockLabel"></div>
           <div id="winHost"></div>
           <div id="taskbar"><i></i><i></i><i></i><span id="taskClock"></span></div>
           <div id="dockEdge"></div>
-          <div id="simDock" aria-label="Dock contoh"></div>
-          <div id="isl" class="hitam medium dock"><div id="islBody"></div></div>
+          <div id="simDock" data-i18n-attr="aria-label:try.dockLabel"></div>
+          <div id="isl" class="isl medium dock"><div id="islBody"></div></div>
         </div></div>
-        <p id="caption" role="status">Layar contoh. Lagu, pesan, dan data di sini hanya contoh.</p>
+        <p id="caption" role="status" data-i18n="try.caption"></p>
       </div>
     </div>
   </div>
@@ -183,41 +109,42 @@ footer a { text-underline-offset: 3px; }
 
 <section class="plain">
   <div class="wrap">
-    <h2>Kenalkan, NIX.</h2>
-    <p class="lede">Kaget saat ada pesan, berbinar saat pekerjaan selesai, tidur saat Anda fokus, dan marah kalau diganggu terus. Klik satu wajah untuk melihatnya di pulau.</p>
+    <h2 data-i18n="nix.title" data-anim="up"></h2>
+    <p class="lede" data-i18n="nix.lede" data-anim="up"></p>
     <div id="faces"></div>
   </div>
 </section>
 
 <section class="plain" id="dock" style="padding-top:0">
   <div class="wrap split">
-    <div>
-      <h2>Pulau di atas, dermaga di bawah.</h2>
-      <p class="lede">Dock Pulo berisi aplikasi yang sama dengan taskbar Anda, dalam urutan yang sama, tanpa pengaturan apa pun. Mati secara bawaan. Saat dimatikan, taskbar Windows kembali seperti semula.</p>
+    <div data-anim="up">
+      <h2 data-i18n="dock.title"></h2>
+      <p class="lede" data-i18n="dock.lede"></p>
     </div>
-    <ul class="rows">
-      <li><span>Ikon membesar mengikuti kursor.</span><button type="button" data-try="Tampilkan dock">Coba</button></li>
-      <li><span>Jendela tersedot ke ikonnya saat diperkecil, lalu keluar lagi saat dibuka.</span><button type="button" data-try="Efek Genie">Coba</button></li>
-      <li><span>Lebih suka animasi Windows biasa? Pilih efek Standar di Pengaturan.</span><button type="button" data-try="Efek Standar">Coba</button></li>
-      <li><span>Ukuran ikon bisa diatur dari 24 sampai 56 piksel.</span><button type="button" data-try="Ukuran dock">Coba</button></li>
-      <li><span>Bisa menggantikan taskbar Windows sepenuhnya.</span><button type="button" data-try="Sembunyikan taskbar">Coba</button></li>
-      <li><span>Turun sendiri saat tertimpa jendela, naik saat kursor menyentuh tepi bawah.</span><button type="button" data-try="Dock turun otomatis">Coba</button></li>
+    <ul class="rows" data-anim="up">
+      <li><span data-i18n="dock.r1"></span><button type="button" data-try="dock" data-i18n="try.btn"></button></li>
+      <li><span data-i18n="dock.r2"></span><button type="button" data-try="genie" data-i18n="try.btn"></button></li>
+      <li><span data-i18n="dock.r3"></span><button type="button" data-try="standard" data-i18n="try.btn"></button></li>
+      <li><span data-i18n="dock.r4"></span><button type="button" data-try="dockSize" data-i18n="try.btn"></button></li>
+      <li><span data-i18n="dock.r5"></span><button type="button" data-try="hideTaskbar" data-i18n="try.btn"></button></li>
+      <li><span data-i18n="dock.r6"></span><button type="button" data-try="dockAlways" data-i18n="try.btn"></button></li>
     </ul>
   </div>
 </section>
 
 <section class="plain" id="jam" style="padding-top:0">
   <div class="wrap split">
-    <div>
-      <h2>Hari ini, di wallpaper Anda.</h2>
-      <p class="lede">Jam desktop menulis nama hari, tanggal, dan jam di desktop, dengan huruf yang dibuat khusus untuk Pulo. Hanya terlihat saat desktop terlihat. Mati secara bawaan.</p>
+    <div data-anim="up">
+      <h2 data-i18n="clock.title"></h2>
+      <p class="lede" data-i18n="clock.lede"></p>
     </div>
-    <div>
-      <div id="clockShow" aria-label="Contoh jam desktop"></div>
+    <div data-anim="up">
+      <div id="clockShow" data-i18n-attr="aria-label:clock.showLabel"></div>
+      <div class="seg" role="group" data-i18n-attr="aria-label:clock.styles"><span data-i18n="clock.styles"></span><button type="button" data-clock-style="line" data-i18n="clock.line"></button><button type="button" data-clock-style="bold" data-i18n="clock.bold"></button><button type="button" data-clock-style="round" data-i18n="clock.round"></button></div>
       <ul class="rows">
-        <li><span>Tarik bagian tengahnya untuk menggeser ke mana saja.</span><button type="button" data-try="Geser dan ubah ukuran">Coba</button></li>
-        <li><span>Tarik tepi atas atau bawah untuk mengubah ukurannya. Klik dua kali di tepi untuk kembali semula.</span><button type="button" data-try="Geser dan ubah ukuran">Coba</button></li>
-        <li><span>Kunci supaya tidak tergeser, dan klik tembus ke desktop.</span><button type="button" data-try="Kunci jam">Coba</button></li>
+        <li><span data-i18n="clock.r1"></span><button type="button" data-try="clockMove" data-i18n="try.btn"></button></li>
+        <li><span data-i18n="clock.r2"></span><button type="button" data-try="clockMove" data-i18n="try.btn"></button></li>
+        <li><span data-i18n="clock.r3"></span><button type="button" data-try="clockLock" data-i18n="try.btn"></button></li>
       </ul>
     </div>
   </div>
@@ -225,36 +152,89 @@ footer a { text-underline-offset: 3px; }
 
 <section class="plain" style="padding-top:0">
   <div class="wrap">
-    <p class="statement">Tanpa akun, tanpa iklan, tanpa telemetri. <span>Data Anda tetap di komputer Anda.</span></p>
-    <p class="fine">Batas yang kami jaga: pulau di bawah 40 MB RAM dan 0% CPU saat diam. Terukur 32,7 MB saat asisten AI bekerja dan jam desktop menyala. Dock berjalan di proses sendiri dan menambah sekitar 22–31 MB bila dinyalakan. Internet hanya dipakai untuk lirik, kurs, cuaca, dan sampul film, keempatnya mati sampai Anda menyalakannya. <a href="privacy.html">Kebijakan privasi</a>.</p>
+    <p class="statement" data-i18n="privacy.statement" data-anim="up"></p>
+    <div class="stats" data-anim="up">
+      <div><b data-count-to="40" data-prefix="&lt;" data-suffix=" MB">&lt;40 MB</b><span data-i18n="stat.ram"></span></div>
+      <div><b>0%</b><span data-i18n="stat.cpu"></span></div>
+      <div><b data-count-to="8" data-prefix="±" data-suffix=" MB">±8 MB</b><span data-i18n="stat.size"></span></div>
+      <div><b>0</b><span data-i18n="stat.account"></span></div>
+    </div>
+    <p class="fine" data-i18n="privacy.fine"></p>
   </div>
 </section>
 
 <section class="ink" id="unduh">
   <div class="wrap">
-    <h2>Bawa NIX pulang.</h2>
+    <h2 data-i18n="get.title" data-anim="up"></h2>
     <div class="get">
       <div>
-        <h3>Microsoft Store</h3>
-        <p>Cara termudah. Pasang sekali, pembaruan diurus Store. Fitur yang mengubah perilaku Windows mati sampai Anda menyalakannya di Pengaturan: telepon WhatsApp di pulau, buka chat pengirim, notifikasi hanya di pulau, dan tombol volume.</p>
-        <div class="act" data-store><span class="pending">Segera hadir</span></div>
+        <h3 data-i18n="get.store"></h3>
+        <p data-i18n="get.storeText"></p>
+        <div class="act" data-store><span class="pending" data-i18n="get.soon"></span></div>
       </div>
       <div>
-        <h3>Unduh Zip</h3>
-        <p>Untuk yang tidak memakai Store. x64 dan ARM64. Semua fitur langsung menyala, dan Windows memperbaruinya sendiri.<span data-count-line hidden> Sudah <span class="count" data-count></span> kali diunduh.</span></p>
-        <div class="act" data-zip><span class="pending">Segera hadir</span></div>
+        <h3 data-i18n="get.zip"></h3>
+        <p><span data-i18n="get.zipText"></span><span data-count-line hidden data-zip-count></span></p>
+        <div class="act" data-zip><span class="pending" data-i18n="get.soon"></span></div>
       </div>
       <div>
-        <h3>Traktir kopi</h3>
-        <p>Pulo gratis. Kalau Pulo membantu, Anda bisa mentraktir pembuatnya kopi lewat Saweria. Pindai kodenya dengan ponsel, atau buka tautannya. Tidak ada fitur yang dikunci.</p>
-        <div class="act coffee"><span data-coffee></span><img src="assets/saweria-qr.svg" width="104" height="104" alt="Kode QR ke saweria.co/CloVerX"></div>
+        <h3 data-i18n="get.coffee"></h3>
+        <p data-i18n="get.coffeeText"></p>
+        <div class="act coffee"><span data-coffee></span><img src="assets/saweria-qr.svg" width="104" height="104" data-i18n-attr="alt:get.qrAlt" alt=""></div>
       </div>
     </div>
-    <ol class="steps">
-      <li><strong>Ekstrak Zip,</strong> lalu klik dua kali <strong>Pasang Pulo</strong>. Pemasang mengunduh Pulo sekitar 8 MB, ditambah Windows App Runtime 48 MB bila belum ada.</li>
-      <li>Bila SmartScreen memperingatkan, pilih <strong>More info</strong> lalu <strong>Run anyway</strong>. Versi Zip memakai sertifikat buatan sendiri, bukan sertifikat berbayar.</li>
-      <li>Setujui izin admin sekali, untuk mempercayai sertifikat Pulo. <strong>Hapus Pulo</strong> di folder yang sama mengeluarkannya lagi.</li>
-    </ol>
+    <div class="guide" id="pasang">
+      <div class="guide-head">
+        <div>
+          <h3 data-i18n="install.title"></h3>
+          <p data-i18n="install.lede"></p>
+        </div>
+        <div class="gtabs" role="tablist" data-i18n-attr="aria-label:install.tabs">
+          <button type="button" role="tab" id="tab-store" aria-controls="steps-store" aria-selected="true" data-guide="store" data-i18n="get.store"></button>
+          <button type="button" role="tab" id="tab-zip" aria-controls="steps-zip" aria-selected="false" data-guide="zip" tabindex="-1" data-i18n="get.zip"></button>
+        </div>
+      </div>
+      <div role="tabpanel" id="steps-store" aria-labelledby="tab-store"><ol class="gsteps" data-steps="install.store"></ol><p class="gnote" data-i18n="install.storeNote"></p></div>
+      <div role="tabpanel" id="steps-zip" aria-labelledby="tab-zip" hidden><ol class="gsteps" data-steps="install.zip"></ol><p class="gnote" data-i18n="install.zipNote"></p></div>
+      <div class="ghelp">
+        <h4 data-i18n="install.helpTitle"></h4>
+        <dl data-help="install.help"></dl>
+      </div>
+    </div>
+    <div class="req" id="syarat">
+      <h3 data-i18n="req.title"></h3>
+      <dl>
+        <div><dt data-i18n="req.os"></dt><dd data-i18n="req.osV"></dd></div>
+        <div><dt data-i18n="req.cpu"></dt><dd data-i18n="req.cpuV"></dd></div>
+        <div><dt data-i18n="req.mem"></dt><dd data-i18n="req.memV"></dd></div>
+        <div><dt data-i18n="req.disk"></dt><dd data-i18n="req.diskV"></dd></div>
+        <div><dt data-i18n="req.net"></dt><dd data-i18n="req.netV"></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 data-i18n="faq.title" data-anim="up"></h2>
+    <div class="qa" id="qa"></div>
+  </div>
+</section>
+
+<section id="masukan">
+  <div class="wrap">
+    <div class="fb" data-anim="up">
+      <img class="peek" src="assets/nix-happy.png" width="310" height="280" alt="">
+      <div>
+        <h2 data-i18n="fb.title"></h2>
+        <p class="lede" data-i18n="fb.lede"></p>
+      </div>
+      <div class="acts">
+        <a class="btn" href="https://github.com/Ocang1996/pulo/issues/new" target="_blank" rel="noopener" data-i18n="fb.new"></a>
+        <a class="textlink" href="https://github.com/Ocang1996/pulo/issues" target="_blank" rel="noopener" data-i18n="fb.list"></a>
+      </div>
+      <p class="note" data-i18n="fb.note"></p>
+    </div>
   </div>
 </section>
 
@@ -262,12 +242,15 @@ footer a { text-underline-offset: 3px; }
 
 <footer class="ink">
   <div class="wrap">
-    <span>Pulo dibuat oleh CloVerX. <a href="privacy.html">Privasi</a></span>
-    <span>Layar contoh digambar ulang dari aplikasinya. Judul lagu Oasis hanya contoh, tanpa afiliasi dengan band atau labelnya. Dynamic Island adalah merek Apple Inc., dan Pulo tidak berafiliasi dengan Apple. Nama aplikasi lain adalah merek pemiliknya.</span>
+    <span><span data-i18n="foot.by"></span> <a href="privacy.html" data-i18n="foot.privacy"></a></span>
+    <span data-i18n="foot.note"></span>
   </div>
 </footer>
 
-<script src="site.js"></script>
-<script src="sim.js"></script>
+<script>PuloI18n.apply();</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js"></script>
+<script src="site.js?v=7"></script>
+<script src="sim.js?v=7"></script>
+<script src="fx.js?v=7"></script>
 </body>
 </html>
