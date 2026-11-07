@@ -3,7 +3,7 @@
   'use strict';
   var SITE = {
     repo: 'Ocang1996/pulo',
-    released: false,             // true setelah rilis pertama terunggah di GitHub
+    released: true,              // rilis v1.0.0 terunggah di GitHub 7 Nov 2026
     store: '',                   // alamat halaman Microsoft Store (https://apps.microsoft.com/detail/9P8K4MX5NV3S setelah lolos sertifikasi)
     saweria: 'https://saweria.co/CloVerX',
   };
